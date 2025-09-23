@@ -1,6 +1,7 @@
 from typing import List
 
 class Solution:
+    
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         size = len(nums)
         # Store the generated answers
@@ -34,4 +35,48 @@ class Solution:
                             seen.add(temp_tuple)
                     
         return output
+    
+    def optimized_fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        size = len(nums)
+
+        output = []
+        
+        # Sort the given array
+        nums.sort()
+
+        for i in range(size - 3):
+            # Handle duplicates for 1st number
+            if i > 0 and nums[i] == nums[i-1]: continue
+            for j in range(i + 1, size - 2):
+                # Handle duplicates for 2nd number
+                if j > i+1 and nums[j] == nums[j-1]: continue
+
+                # Set the two pointers at either ends of the remaining portion of array 
+                left = j + 1
+                right = size - 1
+
+                while(left < right):
+                    curr_sum = nums[i] + nums[j] + nums[left] + nums[right]
+                    if curr_sum > target: 
+                        right -= 1
+                    elif curr_sum < target:
+                        left += 1
+                    else:
+                        output.append([nums[i], nums[j], nums[left], nums[right]])
+                        right -= 1
+                        left += 1 
+                        # Handle the duplicates for 3rd and 4th number
+                        while(left < right and nums[right] == nums[right + 1]):
+                            right -= 1
+                        while(left < right and nums[left] == nums[left - 1]):
+                            left += 1
+        
+        return output
+
+                    
+
+                    
+
+            
+        
         
