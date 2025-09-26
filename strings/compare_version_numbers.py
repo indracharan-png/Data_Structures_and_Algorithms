@@ -20,12 +20,12 @@ class Solution:
 
         # Iterate through (left to right) and cast each string element to int type and compare 
         for i in range(size):
-            version1_arr[i] = int(version1_arr[i])
-            version2_arr[i] = int(version2_arr[i])
+            v1 = int(version1_arr[i])
+            v2 = int(version2_arr[i])
             
-            if version1_arr[i] > version2_arr[i]:
+            if v1 > v2:
                 return 1
-            elif version1_arr[i] < version2_arr[i]:
+            elif v1 < v2:
                 return -1
         
         return 0
