@@ -14,12 +14,12 @@ class Solution:
            if curr_sum == k:
                output = max(output, i + 1)
                
-           
-           deficit_val = curr_sum - k
+           # Check the excess value
+           excess_val = curr_sum - k
            
            # Check if the deficit value has already seen
-           if deficit_val in prefix_sum_dict:
-               output = max(output, i -  prefix_sum_dict[deficit_val])
+           if excess_val in prefix_sum_dict:
+               output = max(output, i -  prefix_sum_dict[excess_val])
                
            # Add the earliest seen current sum value into the dict
            if curr_sum not in prefix_sum_dict:
