@@ -28,7 +28,7 @@ class Solution:
 
                 # See if there's gonna be future rains on this particular lake
                 if next_rains[lake]:
-                    heapq.heappush(heap, (next_rains[lake][0], current_lake)) # Add it to heap by prioritizing its index
+                    heapq.heappush(heap, (next_rains[lake][0], lake)) # Add it to heap by prioritizing its index
                 output.append(-1) # Append the current lake output with -1
             else: 
                 # If its a dry day, check if there's any lakes in heap
