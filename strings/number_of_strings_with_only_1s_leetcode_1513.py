@@ -2,6 +2,7 @@ class Solution:
     def numSub(self, s: str) -> int:
         mod = 10**9 + 7
         n = len(s)
+        
         left, right = 0, 0
         output = 0
 
@@ -17,7 +18,7 @@ class Solution:
             while(right < n and s[right] == '1'):
                 # Add up all possible substrings where 1 at right most end included
                 output += (right - left + 1) % mod
-                output % mod
+                output %= mod
                 right += 1
             # Increment the left pointer to right's position
             left = right
